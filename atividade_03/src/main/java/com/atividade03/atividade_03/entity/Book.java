@@ -21,9 +21,6 @@ public class Book implements Serializable {
     @Column(name = "name", length = 100)
     private String name;
 
-    @Column(name = "name", length = 80)
-    private String category;
-
     public int getId() {
         return id;
     }
@@ -40,13 +37,8 @@ public class Book implements Serializable {
         this.name = name;
     }
 
-    public String getCategory() {
-        return category;
+    @Override
+    public String toString() {
+        return "Book [id=" + id + ", name=" + name + "]";
     }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    
 }
