@@ -1,15 +1,20 @@
 package com.atividade03.atividade_03.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /**
  * Publisher
  */
+@Entity
 public class Publisher implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -20,6 +25,10 @@ public class Publisher implements Serializable {
 
     @Column(name = "name", length = 80)
     private String name;
+
+    @OneToMany
+    @JoinColumn(name = "BOOKS_ID")
+    private List<Book> books;
 
     public int getId() {
         return id;
@@ -35,6 +44,14 @@ public class Publisher implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     @Override
