@@ -18,21 +18,17 @@ public class PublisherController {
     @Autowired
     private PublisherService publisherService;
 
-    @GetMapping("/all")
+    @GetMapping("/template")
     public ModelAndView getAuthors() {
-        ModelAndView mv = new ModelAndView("publisherHome");
+        ModelAndView mv = new ModelAndView("publisherTemplate");
+        mv.addObject("publisher", new Publisher());
         mv.addObject("publishers", publisherService.getAllPublishers());
         return mv;
-    }
-
-    @GetMapping("/register")
-    public String registerForm() {
-        return "publisherRegister";
     }
 
     @PostMapping("/register")
     public String savePublisher (@ModelAttribute Publisher publisher) {
         publisherService.createPublisher(publisher);
-        return "redirect:/publisher/all";
+        return "redirect:/publisher/template";
     }
 }

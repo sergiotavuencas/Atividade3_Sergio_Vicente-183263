@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Author</title>
+    <title>Author Template</title>
 
     <style>
         table, th, td {
@@ -14,7 +14,31 @@
 
 <body>
     <h1 align="center"><a href="/">Menu</a></h1>
-    <h3 align="center"><a href="/author/register">Register</a></h3>
+    <br>
+    <h3 align="center"><a href="/book/template">Book</a></h3>
+    <h3 align="center"><a href="/publisher/template">Publisher</a></h3>
+    <br>
+    <div align="center">
+        <h1>Register an Author</h1>
+        <form th:action="@{/author/register}" th:object="${author}" method="POST">
+            <label>Name: </label>
+            <input type="text" name="name" required/>
+            <br>
+            <br>
+            <label>Phone: </label>
+            <input type="text" name="phone" required/>
+            <br>
+            <br>
+            <label>E-Mail: </label>
+            <input type="text" name="email" required/>
+            <br>
+            <br>
+            <div>
+                <input type="submit" value="Register"/>
+            </div>
+        </form>
+    </div>
+    <br>
     <br>
     <div align="center">
         <table>

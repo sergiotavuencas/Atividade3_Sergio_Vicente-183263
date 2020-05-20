@@ -18,21 +18,17 @@ public class AuthorController {
     @Autowired
     private AuthorService authorService;
 
-    @GetMapping("/all")
+    @GetMapping("/template")
     public ModelAndView getAuthors() {
-        ModelAndView mv = new ModelAndView("authorHome");
+        ModelAndView mv = new ModelAndView("authorTemplate");
+        mv.addObject("author", new Author());
         mv.addObject("authors", authorService.getAllAuthors());
         return mv;
-    }
-
-    @GetMapping("/register")
-    public String registerForm() {
-        return "authorRegister";
     }
 
     @PostMapping("/register")
     public String saveAuthor(@ModelAttribute Author author) {
         authorService.createAuthor(author);
-        return "redirect:/author/all";
+        return "redirect:/author/template";
     }
 }

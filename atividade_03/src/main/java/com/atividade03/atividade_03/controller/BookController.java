@@ -1,7 +1,9 @@
 package com.atividade03.atividade_03.controller;
 
 import com.atividade03.atividade_03.entity.Book;
+import com.atividade03.atividade_03.service.AuthorService;
 import com.atividade03.atividade_03.service.BookService;
+import com.atividade03.atividade_03.service.PublisherService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,21 +20,26 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @GetMapping("/all")
+    @Autowired
+    private AuthorService authorService;
+
+    @Autowired
+    private PublisherService publisherService;
+
+    @GetMapping("/template")
     public ModelAndView getAuthors() {
-        ModelAndView mv = new ModelAndView("bookHome");
+        ModelAndView mv = new ModelAndView("bookTemplate");
+        
+        mv.addObject("book", new Book());
         mv.addObject("books", bookService.getAllBooks());
+        mv.addObject("publishers", publisherService.getAllPublishers());
+        //mv.addObject("authors", authorService.getAllAuthors());
         return mv;
     }
-
-    @GetMapping("/register")
-    public String registerForm() {
-        return "bookRegister";
-    }
-
+    
     @PostMapping("/register")
     public String saveBook(@ModelAttribute Book book) {
         bookService.createBook(book);
-        return "redirect:/book/all";
+        return "redirect:/book/template";
     }
 }

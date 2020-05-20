@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publisher Template</title>
+
+    <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align="center"><a href="/">Menu</a></h1>
+    <br>
+    <h3 align="center"><a href="/author/template">Author</a></h3>
+    <h3 align="center"><a href="/book/template">Book</a></h3>
+    <br>
+    <div align="center">
+        <H1>Register a Publisher</H1>
+        <form th:action="@{/publisher/register}" th:object="${publisher}" method="POST">
+            <label>Name: </label>
+            <input type="text" name="name" required/>
+            <br>
+            <br>
+            <label>Address: </label>
+            <input type="text" name="address" required/>
+            <br>
+            <br>
+            <label>Founded: </label>
+            <input type="date" name="founded" required/>
+            <br>
+            <br>
+            <div>
+                <input type="submit" value="Register"/>
+            </div>
+        </form>
+    </div>
+    <br>
+    <br>
+    <div align="center">
+        <table>
+            <h1>Registered Publishers</h1>
+        
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Founded</th>
+            </tr>
+        
+            <tr th:each="publisher : ${publishers}">
+                <td th:text="${publisher.id}"></td>
+                <td th:text="${publisher.name}"></td>
+                <td th:text="${publisher.address}"></td>
+                <td th:text="${publisher.founded}"></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+</body>
+</html>
