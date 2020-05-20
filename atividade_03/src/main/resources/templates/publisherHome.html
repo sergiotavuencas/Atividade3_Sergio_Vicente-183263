@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publisher</title>
+
+    <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align="center"><a href="/">Menu</a></h1>
+    <h3 align="center"><a href="/publisher/register">Register</a></h3>
+    <br>
+    <div align="center">
+        <table>
+            <h1>Publisher</h1>
+        
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Founded</th>
+            </tr>
+        
+            <tr th:each="publisher : ${publishers}">
+                <td th:text="${publisher.id}"></td>
+                <td th:text="${publisher.name}"></td>
+                <td th:text="${publisher.address}"></td>
+                <td th:text="${publisher.founded}"></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+</body>
+</html>

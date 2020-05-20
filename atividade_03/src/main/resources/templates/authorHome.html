@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author</title>
+
+    <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align="center"><a href="/">Menu</a></h1>
+    <h3 align="center"><a href="/author/register">Register</a></h3>
+    <br>
+    <div align="center">
+        <table>
+            <h1>Authors</h1>
+        
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>E-Mail</th>
+            </tr>
+        
+            <tr th:each="author : ${authors}">
+                <td th:text="${author.id}"></td>
+                <td th:text="${author.name}"></td>
+                <td th:text="${author.phone}"></td>
+                <td th:text="${author.email}"></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+</body>
+</html>

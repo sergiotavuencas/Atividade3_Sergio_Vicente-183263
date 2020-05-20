@@ -1,6 +1,7 @@
 package com.atividade03.atividade_03.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 /**
  * Book
@@ -27,11 +28,17 @@ public class Book implements Serializable {
     @Column(name = "name", length = 100)
     private String name;
 
+    @Column(name = "category", length = 20)
+    private String category;
+
+    @Column(name = "published")
+    private Date published;
+
     @ManyToMany
     @JoinColumn(name = "AUTHORS_ID")
-    private List<Author> authors;
+    private List <Author> authors;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "PUBLISHER_ID")
     private Publisher publisher;
 
@@ -49,6 +56,22 @@ public class Book implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Date getPublished() {
+        return published;
+    }
+
+    public void setPublished(Date published) {
+        this.published = published;
     }
 
     public List<Author> getAuthors() {
@@ -69,6 +92,9 @@ public class Book implements Serializable {
 
     @Override
     public String toString() {
-        return "Book [id=" + id + ", name=" + name + ", publisher=" + publisher.getName() + "]";
+        return "Book [id=" + id + ", category=" + category + ", name=" + name + ", published=" + published
+                + ", publisher=" + publisher.getName() + "]";
     }
+    
+    
 }

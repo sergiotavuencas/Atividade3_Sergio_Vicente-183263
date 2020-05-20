@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publisher</title>
+</head>
+<body>
+    <div align="center">
+        <H1>Register Publisher</H1>
+        <form th:action="@{/publisher/register}" th:object="${publisher}" method="POST">
+            <table>
+                <tr>
+                    <td>Name: </td>
+                    <td><input type="text" name="name" /></td>
+                </tr>
+                <tr>
+                    <td>Address: </td>
+                    <td><input type="text" name="address" /></td>
+                </tr>
+                <tr>
+                    <td>Founded: </td>
+                    <td><input type="date" name="founded" /></td>
+                </tr>
+            </table>
+            <div>
+                <input type="submit" value="Register"/>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

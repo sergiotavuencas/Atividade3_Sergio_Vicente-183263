@@ -1,6 +1,7 @@
 package com.atividade03.atividade_03.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -26,6 +27,12 @@ public class Publisher implements Serializable {
     @Column(name = "name", length = 80)
     private String name;
 
+    @Column(name = "founded")
+    private Date founded;
+
+    @Column(name = "address", length = 200)
+    private String address;
+
     @OneToMany
     @JoinColumn(name = "BOOKS_ID")
     private List<Book> books;
@@ -46,6 +53,22 @@ public class Publisher implements Serializable {
         this.name = name;
     }
 
+    public Date getFounded() {
+        return founded;
+    }
+
+    public void setFounded(Date founded) {
+        this.founded = founded;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public List<Book> getBooks() {
         return books;
     }
@@ -56,6 +79,6 @@ public class Publisher implements Serializable {
 
     @Override
     public String toString() {
-        return "Publisher [id=" + id + ", name=" + name + "]";
+        return "Publisher [id=" + id + ", founded=" + founded + ", address=" + address + ", name=" + name + "]";
     }
 }

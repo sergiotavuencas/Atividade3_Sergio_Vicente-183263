@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 /*
  * Author
@@ -27,9 +27,15 @@ public class Author implements Serializable {
     @Column(name = "name", length = 100)
     private String name;
 
-    @OneToMany
+    @Column(name = "phone", length = 14)
+    private String phone;
+
+    @Column(name = "email", length = 100)
+    private String email;
+
+    @ManyToMany
     @JoinColumn(name = "BOOKS_ID")
-    private List<Book> books;
+    private List <Book> books;
 
     public int getId() {
         return id;
@@ -47,6 +53,22 @@ public class Author implements Serializable {
         this.name = name;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public List<Book> getBooks() {
         return books;
     }
@@ -57,6 +79,9 @@ public class Author implements Serializable {
 
     @Override
     public String toString() {
-        return "Author [id=" + id + ", name=" + name + "]";
+        return "Author [id=" + id + ", email=" + email + ", name=" + name + ", phone=" + phone + "]";
     }
+
+    
+
 }
