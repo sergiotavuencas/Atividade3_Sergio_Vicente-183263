@@ -14,7 +14,7 @@ public class PublisherService {
     @Autowired
     PublisherRepository publisherRepository;
 
-    public void createPublisher(Publisher publisher) {
+    public void savePublisher(Publisher publisher) {
         publisherRepository.save(publisher);
     }
 
