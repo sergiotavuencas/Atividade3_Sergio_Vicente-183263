@@ -18,6 +18,10 @@ public class BookService {
         bookRepository.save(book);
     }
 
+    public Book getBookById(int id) {
+        return bookRepository.findById(id).get();
+    }
+
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }

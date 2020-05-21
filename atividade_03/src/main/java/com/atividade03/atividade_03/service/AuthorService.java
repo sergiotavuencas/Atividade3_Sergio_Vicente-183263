@@ -18,6 +18,10 @@ public class AuthorService {
         authorRepository.save(author);
     }
 
+    public Author getAuthorById(int id) {
+        return authorRepository.findById(id).get();
+    }
+
     public List<Author> getAllAuthors() {
         return authorRepository.findAll();
     }
