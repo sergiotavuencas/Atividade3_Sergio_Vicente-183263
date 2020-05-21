@@ -18,6 +18,10 @@ public class PublisherService {
         publisherRepository.save(publisher);
     }
 
+    public Publisher getPublisherById(int id) {
+        return publisherRepository.findById(id).get();
+    }
+
     public List<Publisher> getAllPublishers() {
         return publisherRepository.findAll();
     }
