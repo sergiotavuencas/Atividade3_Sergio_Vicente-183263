@@ -37,7 +37,7 @@ public class PublisherController {
         if(bindingResult.hasErrors()) {
             return "registerError";
         }
-        publisherService.createPublisher(publisher);
+        publisherService.savePublisher(publisher);
         return "redirect:/publisher/template";
     }
 
