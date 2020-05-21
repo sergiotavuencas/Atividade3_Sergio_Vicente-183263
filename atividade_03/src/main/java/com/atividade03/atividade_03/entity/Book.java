@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,14 +25,8 @@ public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Column(name = "name", length = 100)
     private String name;
-
-    @Column(name = "category", length = 20)
     private String category;
-
-    @Column(name = "published")
     private Date published;
 
     @ManyToOne
@@ -42,7 +35,7 @@ public class Book implements Serializable {
 
     @ManyToMany
     @JoinTable( 
-        name = "AuthorsBooks",
+        name = "BooksAuthors",
         uniqueConstraints   = @UniqueConstraint(columnNames = { "author_id", "book_id" }),
         joinColumns         = @JoinColumn(name = "book_id"),
         inverseJoinColumns  = @JoinColumn(name = "author_id")

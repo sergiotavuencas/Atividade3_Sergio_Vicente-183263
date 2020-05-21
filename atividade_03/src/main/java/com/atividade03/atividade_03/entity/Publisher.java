@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,18 +22,12 @@ public class Publisher implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Column(name = "name", length = 80)
     private String name;
-
-    @Column(name = "founded")
     private Date founded;
-
-    @Column(name = "address", length = 200)
     private String address;
 
     @OneToMany
-    @JoinColumn(name = "BOOKS_ID")
+    @JoinColumn(name = "PUBLISHER_ID")
     private List<Book> books;
 
     public int getId() {

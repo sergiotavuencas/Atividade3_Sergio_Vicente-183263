@@ -3,7 +3,6 @@ package com.atividade03.atividade_03.entity;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,19 +24,13 @@ public class Author implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Column(name = "name", length = 100)
     private String name;
-
-    @Column(name = "phone", length = 14)
     private String phone;
-
-    @Column(name = "email", length = 100)
     private String email;
 
     @ManyToMany
     @JoinTable( 
-        name = "AuthorsBooks",
+        name = "BooksAuthors",
         uniqueConstraints   = @UniqueConstraint(columnNames = { "author_id", "book_id" }),
         joinColumns         = @JoinColumn(name = "author_id"),
         inverseJoinColumns  = @JoinColumn(name = "book_id")
