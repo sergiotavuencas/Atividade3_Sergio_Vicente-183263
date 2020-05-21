@@ -36,11 +36,13 @@ public class Author implements Serializable {
     private String email;
 
     @ManyToMany
-    @JoinTable( name = "AuthorsBooks",
-                uniqueConstraints = @UniqueConstraint(columnNames = {"author_id", "book_id"}),
-                joinColumns = @JoinColumn(name = "author_id"),
-                inverseJoinColumns = @JoinColumn(name = "book_id"))
-    private List <Book> books;
+    @JoinTable( 
+        name = "AuthorsBooks",
+        uniqueConstraints   = @UniqueConstraint(columnNames = { "author_id", "book_id" }),
+        joinColumns         = @JoinColumn(name = "author_id"),
+        inverseJoinColumns  = @JoinColumn(name = "book_id")
+    )
+    private List<Book> books;
 
     public int getId() {
         return id;

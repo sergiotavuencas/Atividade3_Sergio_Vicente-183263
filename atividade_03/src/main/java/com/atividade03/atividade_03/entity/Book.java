@@ -36,16 +36,18 @@ public class Book implements Serializable {
     @Column(name = "published")
     private Date published;
 
-    @ManyToMany
-    @JoinTable( name = "AuthorsBooks",
-                uniqueConstraints = @UniqueConstraint(columnNames = {"author_id", "book_id"}),
-                joinColumns = @JoinColumn(name = "book_id"),
-                inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private List<Author> authors;
-
     @ManyToOne
     @JoinColumn(name = "PUBLISHER_ID")
     private Publisher publisher;
+
+    @ManyToMany
+    @JoinTable( 
+        name = "AuthorsBooks",
+        uniqueConstraints   = @UniqueConstraint(columnNames = { "author_id", "book_id" }),
+        joinColumns         = @JoinColumn(name = "book_id"),
+        inverseJoinColumns  = @JoinColumn(name = "author_id")
+    )
+    private List<Author> authors;
 
     public int getId() {
         return id;
