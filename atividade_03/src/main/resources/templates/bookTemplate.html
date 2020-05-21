@@ -20,41 +20,36 @@
     <br>
     <div align="center">
         <H1>Register a Book</H1>
-        <form th:action="@{/book/register}" th:object="${book}" method="POST">
-            <label>Name: </label>
-            <input type="text" name="name" required/>
-            <br>
-            <br>
-            <label>Category: </label>
-            <input type="text" name="category" required/>
-            <br>
-            <br>
-            <label>Published: </label>
-            <input type="date" name="published" required/>
-            <br>
-            <br>
-            <label>Publisher: </label> 
-                <select th:field="${book.publisher}" required>
-                    <option value=""></option>
-                    <option th:each="publisher : ${publishers}" 
-                            th:value="${publisher.id}" 
-                            th:text="${publisher.name}">
-                    </option>
-                </select>
-            <br>
-            <br>
-            <!--
-            <label>Author: </label> 
-                <select th:field="${book.author}">
-                    <option value=""></option>
-                    <option th:each="author : ${authors}" 
-                            th:value="${author.id}" 
-                            th:text="${author.name}">
-                    </option>
-                </select>
-            <br>
-            <br>
-            -->
+        <form action="#" th:action="@{/book/register}" th:object="${book}" method="POST">
+            <table>
+                <tr>
+                    <td>Name: </td>
+                    <td><input type="text" th:field="*{name}" required/></td>
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+                </tr>
+                <tr>
+                    <td>Category: </td>
+                    <td><input type="text" th:field="*{category}" required/></td>
+                    <td th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></td>
+                </tr>
+                <tr>
+                    <td>Published: </td>
+                    <td><input type="date" th:field="*{published}" required/></td>
+                    <td th:if="${#fields.hasErrors('published')}" th:errors="*{published}"></td>
+                </tr>
+                <tr>
+                    <td>Publisher: </td>
+                    <td>
+                        <select th:field="${book.publisher}" required>
+                            <option value=""></option>
+                            <option th:each="publisher : ${publishers}" 
+                                    th:value="${publisher.id}" 
+                                    th:text="${publisher.name}">
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
             <div>
                 <input type="submit" value="Register"/>
             </div>
@@ -72,7 +67,6 @@
                 <th>Category</th>
                 <th>Published</th>
                 <th>Publisher</th>
-                <th>Author</th>
             </tr>
         
             <tr th:each="book : ${books}">
@@ -81,7 +75,6 @@
                 <td th:text="${book.category}"></td>
                 <td th:text="${book.published}"></td>
                 <td th:text="${book.publisher?.name}"></td>
-                <!--<td th:text="${book.author?.name}"></td>-->
             </tr>
         </table>
     </div>
