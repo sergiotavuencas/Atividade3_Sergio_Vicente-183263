@@ -10,8 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.UniqueConstraint;
 
 /**
  * Book
@@ -22,7 +24,7 @@ public class Book implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "name", length = 100)
@@ -35,8 +37,11 @@ public class Book implements Serializable {
     private Date published;
 
     @ManyToMany
-    @JoinColumn(name = "AUTHORS_ID")
-    private List <Author> authors;
+    @JoinTable( name = "AuthorsBooks",
+                uniqueConstraints = @UniqueConstraint(columnNames = {"author_id", "book_id"}),
+                joinColumns = @JoinColumn(name = "book_id"),
+                inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private List<Author> authors;
 
     @ManyToOne
     @JoinColumn(name = "PUBLISHER_ID")
