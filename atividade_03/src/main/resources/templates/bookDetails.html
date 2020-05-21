@@ -19,14 +19,49 @@
         <h3 align="center"><a href="/book/template">Return</a></h3>
         <br>
         <h3>Book Details</h3>
+        <table>
+            <tr>
+                <td>Id:</td>
+                <td><span th:text="${book.id}"></span></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td><span th:text="${book.name}"></span></td>
+            </tr>
+            <tr>
+                <td>Category:</td>
+                <td><span th:text="${book.category}"></span></td>
+            </tr>
+            <tr>
+                <td>Published:</td>
+                <td><span th:text="${book.published}"></span></td>
+            </tr>
+            <tr>
+                <td>Publisher:</td>
+                <td><span th:text="${book.publisher.name}"></span></td>
+            </tr>
+        </table>
         <br>
-        <b>ID: </b><span th:text="${book.id}"></span>
         <br>
-        <b>Name: </b><span th:text="${book.name}"></span>
-        <br>
-        <b>Category: </b><span th:text="${book.category}"></span>
-        <br>
-        <b>Published: </b><span th:text="${book.published}"></span>
+        <form th:action="@{/book/linkAuthor(book_id = ${book.id})}" method="POST">
+            <table>
+                <tr>
+                    <td>Author: </td>
+                    <td>
+                        <select name="id" required>
+                            <option value="">Choose an Author</option>
+                            <option th:each="author : ${authors}"
+                                    th:value="${author.id}"
+                                    th:text="${author.name}">
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <input type="submit" value="Link Author" />
+            </div>
+        </form>
         <br>
         <br>
         <h2>Authors</h2>
@@ -39,7 +74,7 @@
                     <th>E-mail</th>
                     <th>Phone</th>
                 </tr>
-                <tr th:each="author : ${authors}">
+                <tr th:each="author : ${book.authors}">
                     <td th:text="${author.id}"></td>
                     <td th:text="${author.name}"></td>
                     <td th:text="${author.email}"></td>
