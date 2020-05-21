@@ -24,17 +24,17 @@
             <table>
                 <tr>
                     <td>Name: </td>
-                    <td><input type="text" th:field="*{name}" required/></td>
+                    <td><input type="text" th:field="*{name}" placeholder="Enter a Name" required/></td>
                     <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
                 </tr>
                 <tr>
                     <td>E-mail: </td>
-                    <td><input type="text" th:field="*{email}" required/></td>
+                    <td><input type="text" th:field="*{email}" placeholder="Enter an Email" required/></td>
                     <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
                 </tr>
                 <tr>
                     <td>Phone: </td>
-                    <td><input type="text" th:field="*{phone}" required/></td>
+                    <td><input type="text" th:field="*{phone}" placeholder="Enter a Phone" required/></td>
                     <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></td>
                 </tr>
             </table>
@@ -54,6 +54,7 @@
                 <th>Name</th>
                 <th>Phone</th>
                 <th>E-Mail</th>
+                <th>Details</th>
             </tr>
         
             <tr th:each="author : ${authors}">
@@ -61,6 +62,7 @@
                 <td th:text="${author.name}"></td>
                 <td th:text="${author.phone}"></td>
                 <td th:text="${author.email}"></td>
+                <td><a th:href="@{'/author/details/' + ${author.id}}">Details</a></td>
             </tr>
         </table>
     </div>

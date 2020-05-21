@@ -24,12 +24,12 @@
             <table>
                 <tr>
                     <td>Name: </td>
-                    <td><input type="text" th:field="*{name}" required/></td>
+                    <td><input type="text" th:field="*{name}" placeholder="Enter a Name" required/></td>
                     <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
                 </tr>
                 <tr>
                     <td>Category: </td>
-                    <td><input type="text" th:field="*{category}" required/></td>
+                    <td><input type="text" th:field="*{category}" placeholder="Enter a Category" required/></td>
                     <td th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></td>
                 </tr>
                 <tr>
@@ -41,7 +41,7 @@
                     <td>Publisher: </td>
                     <td>
                         <select th:field="${book.publisher}" required>
-                            <option value=""></option>
+                            <option value="">Choose a Publisher</option>
                             <option th:each="publisher : ${publishers}" 
                                     th:value="${publisher.id}" 
                                     th:text="${publisher.name}">
@@ -67,6 +67,7 @@
                 <th>Category</th>
                 <th>Published</th>
                 <th>Publisher</th>
+                <th>Details</th>
             </tr>
         
             <tr th:each="book : ${books}">
@@ -75,6 +76,7 @@
                 <td th:text="${book.category}"></td>
                 <td th:text="${book.published}"></td>
                 <td th:text="${book.publisher?.name}"></td>
+                <td><a th:href="@{'/book/details/' + ${book.id}}">Details</a></td>
             </tr>
         </table>
     </div>
