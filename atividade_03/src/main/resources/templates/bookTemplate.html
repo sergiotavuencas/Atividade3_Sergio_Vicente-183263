@@ -37,18 +37,6 @@
                     <td><input type="date" th:field="*{published}" required/></td>
                     <td th:if="${#fields.hasErrors('published')}" th:errors="*{published}"></td>
                 </tr>
-                <tr>
-                    <td>Publisher: </td>
-                    <td>
-                        <select th:field="${book.publisher}" required>
-                            <option value="">Choose a Publisher</option>
-                            <option th:each="publisher : ${publishers}" 
-                                    th:value="${publisher.id}" 
-                                    th:text="${publisher.name}">
-                            </option>
-                        </select>
-                    </td>
-                </tr>
             </table>
             <div>
                 <input type="submit" value="Register"/>
@@ -66,7 +54,6 @@
                 <th>Name</th>
                 <th>Category</th>
                 <th>Published</th>
-                <th>Publisher</th>
                 <th>Details</th>
             </tr>
         
@@ -75,7 +62,6 @@
                 <td th:text="${book.name}"></td>
                 <td th:text="${book.category}"></td>
                 <td th:text="${book.published}"></td>
-                <td th:text="${book.publisher?.name}"></td>
                 <td><a th:href="@{'/book/details/' + ${book.id}}">Details</a></td>
             </tr>
         </table>

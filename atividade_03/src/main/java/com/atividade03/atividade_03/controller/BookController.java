@@ -6,7 +6,6 @@ import com.atividade03.atividade_03.entity.Author;
 import com.atividade03.atividade_03.entity.Book;
 import com.atividade03.atividade_03.service.AuthorService;
 import com.atividade03.atividade_03.service.BookService;
-import com.atividade03.atividade_03.service.PublisherService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,9 +29,6 @@ public class BookController {
     @Autowired
     private AuthorService authorService;
 
-    @Autowired
-    private PublisherService publisherService;
-
     // Gets
     @GetMapping("/template")
     public ModelAndView getTemplate() {
@@ -40,7 +36,6 @@ public class BookController {
         
         mv.addObject("book", new Book());
         mv.addObject("books", bookService.getAllBooks());
-        mv.addObject("publishers", publisherService.getAllPublishers());
         return mv;
     }
 

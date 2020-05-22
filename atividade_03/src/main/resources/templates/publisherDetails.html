@@ -19,14 +19,45 @@
         <h3 align="center"><a href="/publisher/template">Return</a></h3>
         <br>
         <h3>Publisher Details</h3>
+        <table>
+            <tr>
+                <td>Id:</td>
+                <td><span th:text="${publisher.id}"></span></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td><span th:text="${publisher.name}"></span></td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td><span th:text="${publisher.address}"></span></td>
+            </tr>
+            <tr>
+                <td>Founded:</td>
+                <td><span th:text="${publisher.founded}"></span></td>
+            </tr>
+        </table>
         <br>
-        <b>ID: </b><span th:text="${publisher.id}"></span>
         <br>
-        <b>Name: </b><span th:text="${publisher.name}"></span>
-        <br>
-        <b>Address: </b><span th:text="${publisher.address}"></span>
-        <br>
-        <b>Founded: </b><span th:text="${publisher.founded}"></span>
+        <form th:action="@{/publisher/linkBook(publisher_id = ${publisher.id})}" method="POST">
+            <table>
+                <tr>
+                    <td>Book: </td>
+                    <td>
+                        <select name="id" required>
+                            <option value="">Choose a Book</option>
+                            <option th:each="book : ${books}"
+                                    th:value="${book.id}"
+                                    th:text="${book.name}">
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <input type="submit" value="Link Book" />
+            </div>
+        </form>
         <br>
         <br>
         <h2>Books</h2>
@@ -39,7 +70,7 @@
                     <th>Category</th>
                     <th>Published</th>
                 </tr>
-                <tr th:each="book : ${books}">
+                <tr th:each="book : ${publisher.books}">
                     <td th:text="${book.id}"></td>
                     <td th:text="${book.name}"></td>
                     <td th:text="${book.category}"></td>

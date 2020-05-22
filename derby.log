@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Wed May 20 21:57:00 BRT 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0172-34bb-c4ed-00000119d908 
-on database directory E:\2020\5º Semestre\Matérias\Programação Orientada a Objeto II\LAB\03 - Atividade Continuada\Atividade-Continuada-02\Atividade3_Sergio_Vicente-183263\db183263 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@4e0e2f2a 
+Thu May 21 18:32:13 BRT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0172-3926-a27c-0000016dc5a8 
+on database directory E:\2020\5º Semestre\Matérias\Programação Orientada a Objeto II\LAB\03 - Atividade Continuada\Atividade-Continuada-02\Atividade3_Sergio_Vicente-183263\183263 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@4e0e2f2a 
 Loaded from file:/C:/Users/JHIBIY/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=12.0.1+12
